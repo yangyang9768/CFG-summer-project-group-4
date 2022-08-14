@@ -153,3 +153,11 @@ alt.Chart(selected_countries).mark_circle().encode(
 [Our World in Data](https://ourworldindata.org)
 
 [COVID-19 Dataset](https://www.kaggle.com/datasets/imdevskp/corona-virus-report)
+
+[UK Government Coronavirus lockdowns](https://www.instituteforgovernment.org.uk/charts/uk-government-coronavirus-lockdowns)
+
+[COVID-19 in Australia](https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Australia)
+
+[Swedish Government response to COVID-19](https://en.wikipedia.org/wiki/Swedish_government_response_to_the_COVID-19_pandemic)
+
+[Time from symptom onset until death](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/928729/S0803_CO-CIN_-_Time_from_symptom_onset_until_death.pdf)

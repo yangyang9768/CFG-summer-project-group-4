@@ -38,6 +38,14 @@ In mid-January 2020, the transmission rate (rate of infection) appeared to be in
 > - covid-containment-and-health-index.csv
 > -covid_19_clean_complete.csv
 
+
+`sns.heatmap(round(df.corr(), 1),annot=True,cmap='viridis')
+sns.set(rc={'figure.figsize':(20,8)})
+plt.title('Heatmap of co-relation',fontsize=15)
+plt.show()`
+
+![Building heatmap to check correlations](/Image/Heatmap.png "Heatmap")
+
 ## Data sources:
 
 

@@ -48,6 +48,105 @@ plt.show()
 
 ![Building heatmap to check correlations](/Image/Heatmap.png "Heatmap")
 
+```
+def show_seasonality(data,country):
+  fig, axes = plt.subplots(1,2,figsize=(20,7), dpi= 80)
+  sns.boxplot(x=data.month, y=data['new_cases'], data=data,ax=axes[0])
+  sns.boxplot(x=data.month, y=data['new_deaths'], data=data)
+  axes[0].set_title(f'{country} new_case seasonality', fontsize=18);
+  axes[1].set_title(f'{country} new death_number seasonality', fontsize=18)
+  plt.show()
+show_seasonality(uk_data,'UK')
+```
+![UK new cases and new deaths seasonality](/Image/UKnew_cases.png "Boxplot")
+
+#### Moving average analysis
+
+###### Uk situation analysis
+
+Moving average analysis please refer to:
+[Wikipedia](https://en.wikipedia.org/wiki/Moving-average_model)
+we would like to using moving average analysis to identify the the growth situation of covid
+As covid identification was influence by the window period and people filling testing
+Based on the COVID 19-SYMPTOM TIME LINES: the syptom normally coming in 5 days at 10 days and the window period normal 14 days.Therefore I would like to build the average moving of the new cases based above information
+To identify fluctuations, we build 5 days moving average/ 10days moving average/ 14 days moving averages
+
+```
+from IPython.core.display import display_svg
+def move_average_plot_test(data,country):
+
+    df=data[['date','total_cases','new_cases']].copy()
+    df.set_index('date', inplace=True)
+    df['5 days Moving_Average new cases'] = 0
+    df['5 days Moving_Average new cases'] = df['new_cases'].rolling(5).mean()
+    df['10 days Moving_Average new cases'] = 0
+    df['10 days Moving_Average new cases'] = df['new_cases'].rolling(10).mean()
+    df['14 days Moving_Average new cases'] = 0
+    df['14 days Moving_Average new cases'] = df['new_cases'].rolling(14).mean()
+    df[['new_cases', '5 days Moving_Average new cases']].plot(figsize = (20, 5), alpha = 0.5)
+    plt.title(f'5 days moving average in {country}')
+
+    df[['new_cases', '10 days Moving_Average new cases']].plot(figsize = (20,5), alpha = 0.5)
+    plt.title(f' 10 days moving average in {country}')
+
+    df[['new_cases', '14 days Moving_Average new cases']].plot(figsize = (20, 5), alpha = 0.5)
+    plt.title(f' 14 days moving average in {country}')
+    return df
+move_average_plot_test(uk_data,'UnitedKingdom')
+```
+![Moving average analysis](/Image/Timeseries.png "Timeseries")
+
+```
+fig,ax = plt.subplots()
+ax.plot(df_final["restriction"],
+        color="red",
+        marker="o")
+# set x-axis label
+ax.set_xlabel("Date", fontsize = 14)
+# set y-axis label
+ax.set_ylabel("Restriction Levels",
+              color="red",
+              fontsize=14)
+ax2=ax.twinx()
+ax2.plot(df_final["total_deaths"],color="blue",marker="o")
+ax2.set_ylabel("Total deaths",color="blue",fontsize=14)
+plt.title('Restriction levels and total deaths in the United Kingdom')
+plt.show()
+```
+![Restriction against total deaths](/Image/Restriction.png "Restriction")
+
+```
+data_three2 = pd.read_csv('final_COVID-19-clean-complete.csv', parse_dates=['Date'])
+SE = data_three2[data_three2['Country/Region'] == 'Sweden']
+
+base = alt.Chart(SE).mark_bar().encode(
+    x='monthdate(Date):O',
+).properties(
+    width=500
+)
+yellow = alt.value('#ffce03')
+base.encode(y = 'Confirmed').properties(title = 'Total Confirmed')|base.encode(y='Deaths', color = yellow).properties(title = 'Total Deaths')
+yellow = alt.value('#ffce03')
+base.encode(y = 'New cases').properties(title = 'Daily New Cases')|base.encode(y='New deaths', color = yellow).properties(title = 'Daily New Deaths')
+```
+![New cases vs new deaths in Sweden](/Image/visualization-2.png "New cases vs new deaths")
+
+```
+alt.Chart(selected_countries).mark_circle().encode(
+    x='monthdate(Date):O',
+    y='Country/Region',
+    color='Country/Region',
+    size=alt.Size('New deaths:Q',
+        scale=alt.Scale(range=[0, 1000]),
+        legend=alt.Legend(title='Daily new deaths')
+    )
+).properties(
+    width=800,
+    height=300
+)
+```
+![Daily new deaths for the 3 countries](/Image/visualization-5.png "Daily new deaths")
+
 ## Data sources:
 
 

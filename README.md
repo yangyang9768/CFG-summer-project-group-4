@@ -2,7 +2,7 @@
 
 
 
-                **Group members: MoureenCaroline Ochieng| Sophie Burroughs | Chiratidzo Matowe | Pelumi Oluboye | Chang Xu | Anna Lisowska**
+                **Group members: Moureen Caroline Ochieng| Sophie Burroughs | Chiratidzo Matowe | Pelumi Oluboye | Chang Xu | Anna Lisowska**
 
 ## This repository contains the report and script:
 
@@ -28,7 +28,6 @@ In mid-January 2020, the transmission rate (rate of infection) appeared to be in
 > 2. Data exploration
 > the first step of data analysis used to explore and visualise data to uncover insights from the start or identify areas or patterns to dig into more.
 >> - Time series analysis
->> - Bi-variate Analysis also known as linear regression
 >> - statistical data visualisation using Altair
 
 

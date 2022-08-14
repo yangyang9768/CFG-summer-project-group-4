@@ -65,10 +65,11 @@ show_seasonality(uk_data,'UK')
 
 Moving average analysis please refer to:
 [Wikipedia](https://en.wikipedia.org/wiki/Moving-average_model)
-we would like to using moving average analysis to identify the the growth situation of covid
-As covid identification was influence by the window period and people filling testing
-Based on the COVID 19-SYMPTOM TIME LINES: the syptom normally coming in 5 days at 10 days and the window period normal 14 days.Therefore I would like to build the average moving of the new cases based above information
-To identify fluctuations, we build 5 days moving average/ 10days moving average/ 14 days moving averages
+We want to use moving average analysis to determine the growth situation of covid.
+Because covid identification was influenced by the window period and the number of people taking the test.
+According to the COVID 19-SYMPTOM TIME LINES: The symptom normally appears 5 days after 10 days, and the window period is 14 days.
+As a result, based on the above data, we would like to calculate the average moving of the new cases.
+We create 5 day moving averages, 10 day moving averages, and 14 day moving averages to identify fluctuations.
 
 ```
 from IPython.core.display import display_svg
